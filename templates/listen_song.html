@@ -1,0 +1,30 @@
+{% extends "basic.html" %}
+    
+    {% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" style="padding-top: 5%">
+                <img src="/media/{{songs.image}}" height="200" width="300">
+            </div>
+            <div class="col-md-8" style="padding-top: 6%">
+                <h4>Title:  {{songs.name}}</h4>
+                <h6>Category: {{songs.tags}}</h6>
+                <h5>Singer: {{songs.singer}}</h5>
+                <h6>Album: {{songs.album}}</h6>
+                <audio controls style="padding-top: 2%">
+                    <source src="/media/{{songs.song}}" type="audio/mp3">
+                </audio>
+                <div style="padding-top:4%">
+                    <form action='/playlist' method='post'>
+                        {% csrf_token %}
+                        <input type="hidden" name-='video_id' value="{{songs.song_id}}" />
+                        <button type='submit' class="btn btn-outline-danger">Add to playlist</button>
+                    </form>
+                    <a download href="/media/{{songs.song}}"><button class="btn btn-danger">Download</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %} 

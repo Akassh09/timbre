@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+
+{% block body %}
+<div class="container" style="padding-top:4%;">
+{% for song in songs %}
+<div class="card mb-3" style="max-width: 950px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/media/{{song.image}}" class="card-img" width="200" height="200" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body" style="background-color:white">
+          <h5 class="card-title" style="color:red">{{song.name}}</h5>
+          <p class="card-text">{{song.tags}}</p>
+          <p class="card-text"> {{song.singer}}</p>
+          <a href="{{song.song_id}}" class="btn btn-outline-danger">Listen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

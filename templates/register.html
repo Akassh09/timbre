@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static '/css/login.css' %}" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <h2> Sign in/up Form</h2>
+<div class="container" id="container">
+	
+	<div class="form-container sign-in-container">
+        <form action="register" method="post">
+            {% csrf_token %}
+
+            {% for message in messages %}
+            <h4 style="color:red">{{message}}</h4>
+            {% endfor %}
+
+            <h1>Create Account</h1>
+            
+            <input type="text" placeholder="Name" id="first_name" name="first_name" />
+            <input type="email" placeholder="Email" id="username" name="username" />
+            <input type="password" placeholder="Password" id="password" name="password" />
+            <input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password"/>
+            <button type="Submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-up-container">
+		<form action="login" method="post">
+			{% csrf_token %}
+
+			{% for message in messages %}
+            <h4 style="color:red">{{message}}</h4>
+            {% endfor %}
+
+			<h1>Sign in</h1>
+			
+			<input type="email" name="username" id="username" placeholder="Email" />
+			<input type="password" name="password" id="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button type="Submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+                <a href="login"><button class="ghost" id="signIn" >Sign In</button></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>AkashMusics</p>
+</footer>
+<script type="text/javascript" src="{% static '/js/login.js' %}"></script>
+</body>
+</html>
